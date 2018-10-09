@@ -21,17 +21,17 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-main .container{
+ .container{
 	width: 450px;
 	text-align: center;
 	vertical-align: middle;
 	background-color: white;
 	color: black;
-	
 	padding-top: 140px;
 	padding-bottom: 140px;
 	margin: auto;
 }
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
