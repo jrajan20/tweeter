@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function() {
-const data = [
+/*const data = [
   {
     "user": {
       "name": "Newton",
@@ -49,23 +49,79 @@ const data = [
     },
     "created_at": 1461113796368
   }
-];
+];*/
+
+
+$(function() {
+  var $form = $('#compose-tweet');
+  
+ 
+  
+  $form.on('submit', function (event) {
+  	 let text = $('.text-box').val();
+  	 let char = text.length;
+ 	console.log(char)
+ 	console.log(text)
+ 	event.preventDefault()
+  if (text === null || text === ''){
+  	alert('Not a valid tweet! Please enter something!')
+  	
+  } else if (char >140){
+  
+  	alert('Character limit exceeded!')
+  	
+  	
+  } else {
+		
+   $.ajax('/tweets/', { method: 'POST', data : $(this).serialize()})
+    .then( () => {
+    	$('.text-box').text('');
+    	loadTweets()
+    	$(".text-box").focus( function()
+		{ 
+  			$(this).val(""); 
+		} );
+     });
+  }
+
+  });
+  
+  
+ 
+});
+
+function loadTweets() {
+
+$.ajax('/tweets/', { method: 'GET' })
+    .then(function (tweets) {
+     
+     renderTweets(tweets);
+    });
+}
+
+function escape(str) {
+
+  var para = document.createElement('p');
+  para.appendChild(document.createTextNode(str));
+  return para.innerHTML;
+}
 
 function renderTweets(tweets) {
   // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
+    
     for ( let tweet of tweets){
     	console.log('abc');
     	let tweetText = createTweetElement(tweet);
-    	$('.tweet-container').append(tweetText);
+    	
+    	$('.tweet-container').prepend(tweetText);
     }
 }
 
 function createTweetElement(tweet) {
+	
 	return `
-
-     
 	      <article class = "tweet-display">
           	<header>
             	<img src= ${tweet.user.avatars.regular}>
@@ -74,7 +130,7 @@ function createTweetElement(tweet) {
           	</header>
           	<section class='tweet-box'>
             	<article>
-            		<section><p>${tweet.content.text}</p></section>
+            		<section><p id = 'user-tweet'>${escape(tweet.content.text)}</p></section>
             		<br>
             		<br>
            		 	<footer>
@@ -92,11 +148,14 @@ function createTweetElement(tweet) {
         </article>
  	
  	 `
-           
-      
+                 
 }
 
-renderTweets(data);
+
+loadTweets();
+
 
 });
+
+
 
