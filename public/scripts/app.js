@@ -53,9 +53,8 @@ $(document).ready(function() {
 
 
 $(function() {
+
   var $form = $('#compose-tweet');
-  
- 
   
   $form.on('submit', function (event) {
   	 let text = $('.text-box').val();
@@ -64,25 +63,29 @@ $(function() {
  	console.log(text)
  	event.preventDefault()
   if (text === null || text === ''){
-  	alert('Not a valid tweet! Please enter something!')
-  	
+  	$('.error-msg').text('Not a valid tweet! Please enter something!')
+  	$('.error-msg').slideDown();
+    
+
   } else if (char >140){
   
-  	alert('Character limit exceeded!')
-  	
+  	$('.error-msg').text('Character limit exceeded!');
+    $('.error-msg').slideDown();
+   
   	
   } else {
-		
+		$('.error-msg').hide();
    $.ajax('/tweets/', { method: 'POST', data : $(this).serialize()})
     .then( () => {
     	$('.text-box').text('');
     	loadTweets()
-    	$(".text-box").focus( function()
-		{ 
-  			$(this).val(""); 
-		} );
+    	$(".text-box").focus( function(){ 
+  			
+        $('.error-msg').hide();
+
+		  });
      });
-  }
+    }
 
   });
   
@@ -153,6 +156,28 @@ function createTweetElement(tweet) {
 
 
 loadTweets();
+
+//toggle compose button
+
+  $('.new-tweet').hide();
+  var toggleCompose = false;
+  $('.compose-toggle').click(function(){
+    toggleCompose = !(toggleCompose);
+    if(toggleCompose === true){
+      $('.new-tweet').slideDown();
+      $('.text-box').focus( function(){
+      $('.error-msg').hide();
+      });
+        
+    } else{
+      $('.new-tweet').slideUp();
+      $('.error-msg').hide();
+      
+    }
+
+  })
+
+
 
 
 });

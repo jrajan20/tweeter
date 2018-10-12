@@ -31,7 +31,9 @@ span.counter{
 	padding: 4px 0 0 0;
 }
 
-
+span.error-msg{
+	color: red;
+}
 
 
 

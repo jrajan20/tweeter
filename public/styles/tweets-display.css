@@ -47,9 +47,11 @@ section.tweet-box{
 section.tweet-box footer{
 	
 	border-top: 1px solid #ccc;
+	border-radius: 5px;
 	padding: 10px 0 10px 15px;
 	font-size: 60%;
 	text-align: left;	
+
 }
 
 

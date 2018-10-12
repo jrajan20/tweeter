@@ -21,5 +21,32 @@
 	vertical-align: top;	
 }
 
+#nav-bar .compose-toggle{
+	
+	float: right;
+	height: 80%;
+	width: 10%;
+	margin-top: 0.5em;
+	margin-right: 2em;
+	margin-bottom: 0.5em;
+	background-color: #eee;
+	border-radius: 5px;
+	font-size: 150%
+	color: #eee
+	opacity: 0.5;
+}
+#nav-bar .compose-toggle i{
+	font-size: 0.8rem;
+	word-spacing: 8px;
+}
+
+#nav-bar button:hover{
+	border:1px solid black;
+	background-color: white;
+	color: black
+	opacity: 1;
+	cursor: pointer;
+}
+
 
 
