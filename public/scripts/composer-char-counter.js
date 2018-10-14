@@ -7,7 +7,6 @@ $(document).ready(function() {
   		
   		let i = 140 - $(this).val().length;	
   		$(".counter").text(i);
-  		console.log(i);
   		if (i < 0){
   		$('.counter').css('color','red');
   		}
