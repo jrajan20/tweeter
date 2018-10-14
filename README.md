@@ -5,8 +5,8 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that uses JQuery, HTML
 
 ## Screenshots
 
-!["Tweet compose box"]()
-!["Tweets"]()
+!["Tweet compose box"](https://raw.githubusercontent.com/jrajan20/tweeter/master/public/images/tweet-box.png)
+!["Tweets"](https://raw.githubusercontent.com/jrajan20/tweeter/master/public/images/tweets.png)
 
 
 ## Dependencies
@@ -16,3 +16,9 @@ Tweeter is a simple, single-page AJAX-based Twitter clone that uses JQuery, HTML
 - Mongodb
 - body-parser
 - chance
+
+
+## Notes
+
+-Run beta version using node index.js
+-Website under construction! New design and authentication coming soon! 
